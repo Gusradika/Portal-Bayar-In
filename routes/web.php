@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SeatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +45,8 @@ Route::controller(UserController::class)->group(function () {
 
 Route::controller(TenantController::class)->group(function () {
     Route::get('/tenant-list', 'viewTenantList')->middleware('auth')->name('view-tenant-list');
+});
+
+Route::controller(SeatController::class)->group(function () {
+    Route::get('/seat-list', 'viewSeatList')->middleware('auth')->name('view-seat-list');
 });

@@ -62,7 +62,7 @@
          </li>
 
          <li class="nav-item {{ Request::is('seat-list*') ? 'active' : '' }} animate-btn">
-             <a class="nav-link" href="#"><i class="fa-solid fa-school-flag"></i>
+             <a class="nav-link" href="{{ route('view-seat-list') }}"><i class="fa-solid fa-school-flag"></i>
                  <span>List Seat</span></a>
          </li>
 
