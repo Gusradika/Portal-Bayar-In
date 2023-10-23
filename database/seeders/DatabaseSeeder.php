@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use App\Models\Roles;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -31,5 +33,16 @@ class DatabaseSeeder extends Seeder
                 "name" => $key
             ]);
         }
+
+        $admin = [
+            "name" => "admin",
+            "username" => "admin",
+            "roles_id" => 1,
+            "no_telp" => "081330293390",
+            "email" => "admin@gmail.com",
+            "password" => Hash::make("admin"),
+        ];
+
+        User::create($admin);
     }
 }
