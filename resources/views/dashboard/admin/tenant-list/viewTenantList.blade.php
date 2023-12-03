@@ -14,9 +14,6 @@
         <!-- Header dan Tombol Aksi -->
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="fw-bold display-6">Data Tenant
-                <a href="#"><button class="btn btn-primary animate-btn-small">+
-                        Tambah</button>
-                </a>
             </h1>
         </div>
     </div>
@@ -86,10 +83,11 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
+                                            <th scope="col">Gambar</th>
                                             <th scope="col">Nama</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">No Telp</th>
                                             <th scope="col">Jumlah Menu</th>
+                                            <th scope="col">Balance</th>
+                                            {{-- <th scope="col">Jumlah Menu</th> --}}
                                             <th scope="col">Created At</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -98,10 +96,10 @@
                                         @foreach ($data['list'] as $key)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
+                                                <td> -</td>
                                                 <td>{{ $key->name }}</td>
-                                                <td>{{ $key->email }}</td>
-                                                <td>{{ $key->no_telp }}</td>
-                                                <td>0</td>
+                                                <td>-</td>
+                                                <td>{{ $key->balance }}</td>
                                                 <td>{{ $key->created_at }}</td>
                                                 <td>
                                                     <!-- Tombol Aksi -->
@@ -110,7 +108,7 @@
                                                         class="badge bg-info p-2 mb-1 animate-btn-small"
                                                         onclick="getData({{ $key->id }})"><i
                                                             class="fa-regular fa-eye fa-xl"></i></a>
-                                                    <a href="#"
+                                                    <a href="{{ route('view-user-update', ['user' => $key->id]) }}"
                                                         class="badge bg-secondary p-2 mb-1 animate-btn-small"><i
                                                             class="fa-solid fa-pen-to-square fa-xl"></i></a>
                                                     <a href="#table" class="badge bg-secondary p-2 animate-btn-small"><i
@@ -146,6 +144,8 @@
     </div>
 
 
+
+
     <!-- Modal Konfirmasi Hapus -->
     <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel"
         aria-hidden="true">
@@ -157,10 +157,10 @@
                         aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Apakah Anda yakin ingin menghapus Tenant ini?
+                    Apakah Anda yakin ingin menghapus User ini?
                 </div>
                 <div class="modal-footer">
-                    <form action="#" method="post">
+                    <form action="{{ route('delete-user') }}" method="post">
                         @csrf
                         <button type="button" class="btn btn-secondary animate-btn-small"
                             data-bs-dismiss="modal">Tutup</button>
@@ -172,27 +172,47 @@
         </div>
     </div>
 
-    <!-- Modal Detail Tenant -->
-    <div class="modal fade" id="modal-view" tabindex="-1" aria-labelledby="modal-view" aria-hidden="true">
+    <!-- Modal -->
+    <div class="modal fade" id="modal-view" tabindex="-1" aria-labelledby="modal-view-label" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title"><i class="fa-solid fa-book"></i> Mapel Tenant</h5>
+                    <h5 class="modal-title" id="modal-view-label">User Details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="mb-1 ps-4 pe-4">
-                        <img src="{{ url('/asset/img/panorama.png') }}" class="w-100 rounded-2 img-fluid"
-                            alt="">
-                    </div>
-                    <div id="modalContent">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary animate-btn-small"
-                        data-bs-dismiss="modal">Tutup</button>
+                    <!-- User details will be displayed here -->
+                    <div id="user-details"></div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+<script>
+    function getData(userId) {
+        $.ajax({
+            url: "{{ route('view-user-detail') }}", // Replace with your endpoint to fetch user details
+            method: 'GET',
+            data: {
+                id: userId
+            },
+            success: function(response) {
+                // Display the user details in the modal
+                $('#user-details').html(response);
+
+                // Show the modal
+                $('#modal-view').modal('show');
+            },
+            error: function(error) {
+                console.error('Error fetching user details:', error);
+            }
+        });
+    }
+
+    function changeValue(itemId) {
+        console.log(itemId);
+        const deleteButton = document.getElementById('deleteButton');
+        deleteButton.setAttribute('value', itemId);
+    }
+</script>

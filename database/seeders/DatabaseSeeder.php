@@ -36,7 +36,6 @@ class DatabaseSeeder extends Seeder
 
         $admin = [
             "name" => "admin",
-            "username" => "admin",
             "roles_id" => 1,
             "no_telp" => "081330293390",
             "email" => "admin@gmail.com",
@@ -44,5 +43,7 @@ class DatabaseSeeder extends Seeder
         ];
 
         User::create($admin);
+
+        User::factory(30)->create();
     }
 }

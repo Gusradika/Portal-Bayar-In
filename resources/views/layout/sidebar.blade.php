@@ -67,8 +67,12 @@
          </li>
 
          <li class="nav-item {{ Request::is('reports*') ? 'active' : '' }} animate-btn">
-             <a class="nav-link" href="#"><i class="fa-solid fa-users"></i>
+             <a class="nav-link" href="{{ route('view-report') }}"><i class="fa-solid fa-users"></i>
                  <span>Report and Analytic</span></a>
+         </li>
+         <li class="nav-item {{ Request::is('reports*') ? 'active' : '' }} animate-btn">
+             <a class="nav-link" href="{{ route('view-top-up') }}"><i class="fa-solid fa-users"></i>
+                 <span>Top Up Saldo</span></a>
          </li>
 
          <!-- Divider -->

@@ -146,7 +146,7 @@
         </div>
         {{-- Box Kanan --}}
         <div class=" col-sm-7 col-md-8 mt-4 col-12 text-center d-none d-sm-block rounded-4">
-            <img src="{{ url('asset/images/application-resources/kopi.jpg') }}" class="w-100 img-fluid" alt="">
+            <img src="{{ url('asset/images/kopi.png') }}" class="w-100 img-fluid" alt="">
         </div>
     </div>
 @endsection

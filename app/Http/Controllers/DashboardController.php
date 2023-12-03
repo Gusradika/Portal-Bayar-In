@@ -13,4 +13,8 @@ class DashboardController extends Controller
     {
         return view('dashboard/dashboard');
     }
+    public function viewReport()
+    {
+        return view('dashboard/admin/report/report');
+    }
 }

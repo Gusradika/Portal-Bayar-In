@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('roles_id')->default(3);
-            $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('no_telp')->unique();
             $table->bigInteger('balance')->default(0);
