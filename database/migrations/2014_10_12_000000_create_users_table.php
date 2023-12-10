@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('roles_id')->default(3);
             $table->string('email')->unique();
+            $table->string('gambar')->nullable();
             $table->string('no_telp')->unique();
             $table->bigInteger('balance')->default(0);
             $table->timestamp('email_verified_at')->nullable();

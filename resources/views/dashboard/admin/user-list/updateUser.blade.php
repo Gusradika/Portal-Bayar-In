@@ -1,11 +1,34 @@
 @extends('layout/template-main')
 
 @section('container')
+    <link rel="stylesheet" href="{{ url('/asset/js/ijaboCropTool.min.css') }}">
     <div class="row p-4">
-        <div class="col-6">
-
+        <h1>Update User</h1>
+        <hr>
+        <div class="col-md-6 col-12">
+            @if ($user->gambar == null)
+                <div class="text-center">
+                    <img src="{{ asset('asset/images/placeholder.jpg') }}"
+                        class="rounded-circle mb-4 img-fluid image-previewer" alt="">
+                    <br>
+                    <h6>Change Image</h6>
+                    <input type="file" class="custom-file-input d-none" name="file" id="file">
+                    <label class="btn btn-outline-dark text-center mx-auto mt-4" for="file">Upload
+                        Gambar</label>
+                </div>
+            @else
+                <div class="text-center">
+                    <img src="{{ asset('storage/user-images/' . $user->gambar) }}"
+                        class="rounded-circle mb-4 img-fluid image-previewer" alt="">
+                    <br>
+                    <h6>Change Image</h6>
+                    <input type="file" class="custom-file-input d-none" name="file" id="file">
+                    <label class="btn btn-outline-dark text-center mx-auto mt-4" for="file">Upload
+                        Gambar</label>
+                </div>
+            @endif
         </div>
-        <div class="col-6">
+        <div class="col-md-6 col-12">
             <form action="{{ route('update-user') }}" method="post">
                 @csrf
                 <label class="d-block" id="">ID User</label>
@@ -27,7 +50,6 @@
                 </div>
                 <label class="d-block" id="">Email</label>
                 <div class="input-group mb-3">
-
                     <input type="text" class="form-control" name="email" placeholder="Username" aria-label="Username"
                         aria-describedby="" value="{{ $user->email }}" required>
                     @error('email')
@@ -57,4 +79,23 @@
             </form>
         </div>
     </div>
+    <script src="{{ url('/asset/js/ijaboCropTool.min.js') }}"></script>
+    <script>
+        $('#file').ijaboCropTool({
+            preview: '.image-previewer',
+            setRatio: 1,
+            allowedExtensions: ['jpg', 'jpeg', 'png'],
+            buttonsText: ['Simpan', 'Batalkan'],
+            buttonsColor: ['#30bf7d', '#ee5155', -15],
+            processUrl: "{{ route('upload-profile-picture', ['id' => $user->id]) }}",
+            withCSRF: ['_token', '{{ csrf_token() }}'],
+            resetFileInput: false,
+            onSuccess: function(message, element, status) {
+                alert(message);
+            },
+            onError: function(message, element, status) {
+                alert(message);
+            }
+        });
+    </script>
 @endsection

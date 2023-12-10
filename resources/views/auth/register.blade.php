@@ -14,7 +14,6 @@
                 <div class="card-body">
 
                     {{-- Register Customer --}}
-
                     <form action="{{ route('register') }}" method="POST">
                         @csrf
                         <div class="row">

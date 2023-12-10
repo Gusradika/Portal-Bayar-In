@@ -96,7 +96,15 @@
                                         @foreach ($data['list'] as $key)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td> -</td>
+                                                <td>
+                                                    @if ($key->gambar == null)
+                                                        -
+                                                    @else
+                                                        <img src="{{ asset('/storage/user-images/' . $key->gambar) }}"
+                                                            alt="" class="img-fluid rounded-circle"
+                                                            style="width: 75px">
+                                                    @endif
+                                                </td>
                                                 <td>{{ $key->name }}</td>
                                                 <td>-</td>
                                                 <td>{{ $key->balance }}</td>
@@ -188,6 +196,8 @@
         </div>
     </div>
 @endsection
+
+
 
 <script>
     function getData(userId) {

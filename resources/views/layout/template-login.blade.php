@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <div class="container mt-5 mb-5">
+    <div class="container mt-5 mb-5 p-4">
 
         @yield('container')
 
@@ -27,7 +27,6 @@
             <strong>Portal Bayar In</strong> Proyek Pengembangan Sistem Informasi (Universitas Dinamika 2023)
         </div>
     </div>
-
 
     <script src="https://kit.fontawesome.com/68f43c1324.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"

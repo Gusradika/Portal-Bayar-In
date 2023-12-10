@@ -34,5 +34,13 @@
                 readonly disabled value="{{ $user->created_at }}">
         </div>
 
+        <form action="{{ route('add-balance') }}" method="post">
+            @csrf
+            <label for="">Top Up Amount</label>
+            <input type="hidden" name="id" value="{{ $user->id }}">
+            <input type="number" class="form-control mb-2" name="amount">
+            <button class="btn btn-primary w-100" type="submit">Simpan</button>
+        </form>
+
     </div>
 </div>

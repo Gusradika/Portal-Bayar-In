@@ -48,6 +48,9 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/user/delete-user', 'deleteUser')->middleware('auth')->name('delete-user');
 
     Route::get('/user/top-up', 'viewTopUp')->middleware('auth')->name('view-top-up');
+    Route::post('/user/save-image', 'saveImage')->middleware('auth')->name('upload-profile-picture');
+    Route::get('/user/search-user-email', 'searchUserEmail')->middleware('auth')->name('search-user-email');
+    Route::post('/user/add-balance', 'addBalance')->middleware('auth')->name('add-balance');
 });
 
 Route::controller(TenantController::class)->group(function () {
