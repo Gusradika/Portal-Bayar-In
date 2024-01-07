@@ -56,19 +56,6 @@
                             </div>
                         </div>
                         <div class="row">
-                            {{-- username --}}
-                            <div class="col-sm-12 mb-3">
-                                <div class="form-group">
-                                    <label for="password">Username : </label>
-                                    <input class="form-control" id="username" type="text" name="username"
-                                        placeholder="Masukan Username anda..." required>
-                                    @error('username')
-                                        <div class="text-danger small">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
                             {{-- Email --}}
                             <div class="col-sm-12 mb-3">
                                 <div class="form-group">

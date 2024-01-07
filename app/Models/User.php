@@ -3,11 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Notifikasi;
 use App\Models\Roles;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Notifications\Notifiable;
+use App\Models\Transaksi;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -20,11 +22,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'username',
         'gambar',
         'no_telp',
         'roles_id',
         'email',
+        'balance',
         'password',
     ];
 
@@ -51,5 +53,15 @@ class User extends Authenticatable
     public function Roles()
     {
         return $this->hasMany(Roles::class);
+    }
+
+    public function Transaksi()
+    {
+        return $this->hasMany(Transaksi::class);
+    }
+
+    public function Notifikasi()
+    {
+        return $this->hasMany(Notifikasi::class);
     }
 }

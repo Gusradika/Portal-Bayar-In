@@ -28,8 +28,7 @@ class AuthController extends Controller
     {
         $request->validate([
             "name" => "required",
-            "no_telp" => "required|unique:users",
-            "username" => "required|unique:users",
+            "no_telp" => "required",
             "email" => "required|unique:users|email",
             "password" => "required|min:8",
             "confirm-password" => "required|same:password",
@@ -51,7 +50,6 @@ class AuthController extends Controller
             $data = [
                 "name" => $input['name'],
                 "roles_id" => $roles,
-                "username" => $input['username'],
                 "email" => $input['email'],
                 "no_telp" => $input['no_telp'],
                 "password" => Hash::make($input['password']),
@@ -63,9 +61,6 @@ class AuthController extends Controller
             dd($e);
             abort(404);
         }
-
-        // dd($input['username']);
-        // Data Builder
 
 
         return redirect(route('view-login'))->with('success', 'Registrasi Berhasil');

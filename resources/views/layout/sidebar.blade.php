@@ -1,4 +1,4 @@
- <ul class="navbar-nav  bg-gradient-success  sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+ <ul class="navbar-nav  bg-black  sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
      <!-- Sidebar - Brand -->
      <a class=" d-flex align-items-center justify-content-center" href="/dashboard">

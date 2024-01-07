@@ -71,8 +71,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <strong>Academify-CBT</strong> made by Oktaven 2023 discover more
-                        built-in app via <a href="#">This Link</a>
+                        <strong>Portal Bayar-In</strong>
                     </div>
                 </div>
             </footer>
