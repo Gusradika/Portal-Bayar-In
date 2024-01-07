@@ -14,7 +14,7 @@
         <!-- Header dan Tombol Aksi -->
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="fw-bold display-6">Data Seat
-                <a href="#"><button class="btn btn-primary animate-btn-small">+
+                <a href="{{ route('view-create-qr') }}"><button class="btn btn-primary animate-btn-small">+
                         Tambah</button>
                 </a>
             </h1>
@@ -97,7 +97,9 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $key->seat_code }}</td>
-                                                <td>{{ $key->qr }}</td>
+                                                <td> <img src="{{ $key->qr }}" alt="Qr" class="w-25 img-fluid">
+                                                </td>
+                                                <td>{{ $key->created_at }}</td>
                                                 <td>
                                                     <!-- Tombol Aksi -->
                                                     <a href="#table" data-bs-toggle="modal" data-bs-target="#modal-view"

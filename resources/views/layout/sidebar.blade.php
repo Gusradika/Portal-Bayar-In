@@ -102,7 +102,7 @@
      {{-- User --}}
      @if (Auth()->User()->roles_id == 3)
          <li class="nav-item {{ Request::is('data-pengajar*') ? 'active' : '' }} animate-btn">
-             <a class="nav-link" href="#"> <i class="fa-solid fa-chalkboard-user"></i>
+             <a class="nav-link" href="{{ route('view-scan-qr') }}"> <i class="fa-solid fa-chalkboard-user"></i>
                  <span>Scan QR Code</span></a>
          </li>
 

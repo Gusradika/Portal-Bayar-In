@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\QRController;
 use App\Http\Controllers\SeatController;
 
 /*
@@ -59,4 +60,9 @@ Route::controller(TenantController::class)->group(function () {
 
 Route::controller(SeatController::class)->group(function () {
     Route::get('/seat-list', 'viewSeatList')->middleware('auth')->name('view-seat-list');
+    Route::get('/create-qr-code', 'viewCreateQR')->middleware('auth')->name('view-create-qr');
+    Route::get('/save-qr-code', 'saveQRCode')->middleware('auth')->name('save-seat');
+});
+Route::controller(QRController::class)->group(function () {
+    Route::get('/scan-qr', 'viewScanQR')->middleware('auth')->name('view-scan-qr');
 });

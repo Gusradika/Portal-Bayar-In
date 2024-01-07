@@ -20,7 +20,8 @@ class Seat extends Model
 
     use HasFactory;
 
-    public function Transaksi(){
+    public function Transaksi()
+    {
         return $this->hasMany(Transaksi::class);
     }
 }
