@@ -16,9 +16,10 @@ return new class extends Migration
             $table->string("name");
             $table->foreignId("category_id");
             $table->foreignId("user_id");
+            $table->text("gambar")->nullable();
             $table->bigInteger("harga");
             $table->text("deskripsi");
-            $table->text("excerpt");
+            $table->text("excerpt")->nullable();
             $table->timestamps();
         });
     }

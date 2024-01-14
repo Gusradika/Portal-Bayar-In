@@ -18,6 +18,7 @@ class Menu extends Model
     protected $fillable = [
         "name",
         "category_id",
+        "gambar",
         "harga",
         "deskripsi",
         "excerpt",
@@ -25,7 +26,8 @@ class Menu extends Model
     ];
 
     protected $guarded = [
-        "id"];
+        "id"
+    ];
 
     public function User()
     {

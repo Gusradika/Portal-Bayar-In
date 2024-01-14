@@ -87,7 +87,7 @@
             allowedExtensions: ['jpg', 'jpeg', 'png'],
             buttonsText: ['Simpan', 'Batalkan'],
             buttonsColor: ['#30bf7d', '#ee5155', -15],
-            processUrl: "{{ route('upload-profile-picture', ['id' => $user->id]) }}",
+            processUrl: "{{ route('upload-menu-picture', ['id' => $data->id]) }}",
             withCSRF: ['_token', '{{ csrf_token() }}'],
             resetFileInput: false,
             onSuccess: function(message, element, status) {

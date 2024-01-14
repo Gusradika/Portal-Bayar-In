@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QRController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\SeatController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\QRController;
-use App\Http\Controllers\SeatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Route::get('/', function () {
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('/login', 'viewLogin')->middleware('guest')->name('view-login');
+    Route::get('/test', 'logicSKillTest')->middleware('guest')->name('test');
     Route::get('/register-user', 'viewRegister')->middleware('guest')->name('view-register');
     Route::get('/register-tenant', 'viewRegisterTenant')->middleware('guest')->name('view-register-tenant');
 
@@ -62,7 +64,20 @@ Route::controller(SeatController::class)->group(function () {
     Route::get('/seat-list', 'viewSeatList')->middleware('auth')->name('view-seat-list');
     Route::get('/create-qr-code', 'viewCreateQR')->middleware('auth')->name('view-create-qr');
     Route::get('/save-qr-code', 'saveQRCode')->middleware('auth')->name('save-seat');
+    Route::get('/seat/{seat}', 'viewMenu')->middleware('auth')->name('view-menu-seat');
 });
+
 Route::controller(QRController::class)->group(function () {
     Route::get('/scan-qr', 'viewScanQR')->middleware('auth')->name('view-scan-qr');
+});
+
+Route::controller(MenuController::class)->group(function () {
+    Route::get('/menu-list', 'viewMenuTenant')->middleware('auth')->name('view-menu-tenant');
+    Route::get('/menu-create', 'viewCreateMenu')->middleware('auth')->name('view-create-menu');
+    Route::get('/menu-update', 'viewUpdateMenu')->middleware('auth')->name('view-update-menu');
+
+    Route::post('/menu-create-now', 'createMenu')->middleware('auth')->name('create-menu');
+    Route::post('/menu-update-now', 'updateMenu')->middleware('auth')->name('update-menu');
+    Route::post('/menu-delete-now', 'deleteMenu')->middleware('auth')->name('delete-menu');
+    Route::post('/menu-upload-image', 'uploadImage')->middleware('auth')->name('upload-menu-picture');
 });

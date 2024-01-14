@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use App\Models\Menu;
 use App\Models\Seat;
 use Illuminate\Http\Request;
 
@@ -21,6 +22,20 @@ class SeatController extends Controller
 
         return view('dashboard/admin/seat-list/viewSeatList', ['data' => $data]);
     }
+
+    public function viewMenu($seat)
+    {
+        $seat = Seat::where('seat_code', $seat)->first();
+        // dd($seat);
+        $menu = Menu::paginate(15);
+
+        $data = [
+            "menu" => $menu,
+        ];
+
+        return view('dashboard/user/menu/menu-list', ["seat" => $seat, "data" => $data]);
+    }
+
     public function viewCreateQR()
     {
         return view('dashboard/admin/qr/create-qr');

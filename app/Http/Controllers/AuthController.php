@@ -15,6 +15,10 @@ class AuthController extends Controller
     {
         return view('auth/login');
     }
+    public function logicSkillTest()
+    {
+        return view('auth/blank');
+    }
 
     // method for viewing register form
     public function viewRegister(Request $request)
@@ -58,10 +62,9 @@ class AuthController extends Controller
             // Create user from data
             User::create($data);
         } catch (Exception $e) {
-            dd($e);
+            // dd($e);
             abort(404);
         }
-
 
         return redirect(route('view-login'))->with('success', 'Registrasi Berhasil');
     }

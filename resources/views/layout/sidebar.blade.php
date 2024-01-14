@@ -87,7 +87,7 @@
          </li>
 
          <li class="nav-item {{ Request::is('data-mapel*') ? 'active' : '' }} animate-btn">
-             <a class="nav-link" href="#"><i class="fa-solid fa-book"></i>
+             <a class="nav-link" href="{{ route('view-menu-tenant') }}"><i class="fa-solid fa-book"></i>
                  <span>List Menu</span></a>
          </li>
 

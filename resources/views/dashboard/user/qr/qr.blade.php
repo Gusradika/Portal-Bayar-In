@@ -32,6 +32,18 @@
         <div class="text-center">
             <h2>Debug menu</h2>
         </div>
+
+        <div class="p-4 border border-primary rounded-2">
+            @foreach ($data as $key)
+                <div class="border rounded-2 border">
+                    {{ $key->seat_code }}
+                    <br>
+                    <img src="{{ $key->qr }}" alt="" width="125px">
+                    <a href="localhost:8000/seat/{{ $key->seat_code }}">localhost:8000/seat/{{ $key->seat_code }}</a>
+                </div>
+            @endforeach
+        </div>
+
     </div>
 
     <!-- Modal Konfirmasi Hapus -->
