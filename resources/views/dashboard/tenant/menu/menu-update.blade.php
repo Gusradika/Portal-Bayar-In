@@ -6,7 +6,7 @@
     </style>
     <link rel="stylesheet" href="{{ url('/asset/js/ijaboCropTool.min.css') }}">
     <div class="row p-4">
-        <h1>Tambah Menu</h1>
+        <h1>Update Menu</h1>
         <hr>
         <div class="col-12">
             <div class="text-center">

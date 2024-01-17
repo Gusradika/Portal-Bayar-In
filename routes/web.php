@@ -1,13 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\QRController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\MenuController;
-use App\Http\Controllers\SeatController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\TenantController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\QRController;
+use App\Http\Controllers\SeatController;
+use App\Http\Controllers\TenantController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,12 +18,11 @@ use App\Http\Controllers\DashboardController;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return redirect(route('view-login'));
 });
-
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('/login', 'viewLogin')->middleware('guest')->name('view-login');
@@ -35,8 +34,6 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/register', 'register')->middleware('guest')->name('register');
     Route::post('/logout', 'logout')->middleware('auth')->name('logout');
 });
-
-
 
 Route::controller(DashboardController::class)->group(function () {
     Route::get('/dashboard', 'viewDashboard')->middleware('auth')->name('view-dashboard');
